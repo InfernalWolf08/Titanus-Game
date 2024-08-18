@@ -129,9 +129,7 @@ public class PlayerController : MonoBehaviour
 
             // Get a click
             if (Input.GetMouseButtonDown(0))
-            {
-                
-            }
+            {}
         } else {
             // Hide crosshair
             crossHair.SetActive(false);
