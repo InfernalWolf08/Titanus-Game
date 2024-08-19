@@ -24,8 +24,17 @@ public class PlayerIntractController : MonoBehaviour
             // Debug Data
             print(hit.collider.gameObject.name);
             
-            // Show Crosshair
-            crossHair.SetActive((hit.collider.gameObject.layer==6 || hit.collider.gameObject.layer==14) && controller.canLook);
+            // Adjust on Look
+            if ((hit.collider.gameObject.layer==6) && controller.canLook)
+            {
+                crossHair.SetActive(true);
+                if (hit.collider.gameObject.GetComponent<ToggleObjectUI>()!=null)
+                {
+                    hit.collider.gameObject.GetComponent<ToggleObjectUI>().toggle(true);
+                }
+            } else {
+                crossHair.SetActive(false);
+            }
 
             // Get a click
             if (Input.GetMouseButtonDown(0))
