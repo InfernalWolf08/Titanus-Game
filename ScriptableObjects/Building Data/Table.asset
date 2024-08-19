@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e40edcc165dec3842a1ae4545610dd11, type: 3}
-  m_Name: HUB
+  m_Name: Table
   m_EditorClassIdentifier: 
-  buildingName: Hub
-  buildingAsset: {fileID: 2229933461766149951, guid: 7cf9c6e85427c9641b94514084186c14, type: 3}
-  buildingPlacer: {fileID: 2229933461766149951, guid: e59f20748c9c25c41a1f3511b511ee02, type: 3}
-  buildingSize: {x: 10, y: 6, z: 10}
+  buildingName: Table
+  buildingAsset: {fileID: 3529923195519498752, guid: 3b8f5fe317b93c249a1b8fc4f92114d7, type: 3}
+  buildingPlacer: {fileID: 3529923195519498752, guid: 35d914768678642419eae3879c2b3fe6, type: 3}
+  buildingSize: {x: 2, y: 1, z: 1}

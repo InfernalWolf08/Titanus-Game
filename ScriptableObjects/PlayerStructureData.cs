@@ -7,5 +7,6 @@ public class PlayerStructureData : ScriptableObject
 {
     public string buildingName;
     public GameObject buildingAsset;
+    public GameObject buildingPlacer;
     public Vector3 buildingSize;
 }

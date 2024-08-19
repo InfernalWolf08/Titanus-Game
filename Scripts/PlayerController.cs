@@ -23,11 +23,6 @@ public class PlayerController : MonoBehaviour
     float xRotation = 0f;
     public bool canLook = true;
 
-    [Header("Interaction")]
-    public LayerMask interactableLayers;
-    public float raycastLength = Mathf.Infinity;
-    public GameObject crossHair;
-
 
     void Start()
     {
@@ -116,23 +111,6 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(Vector3.up * mouseX);
         }
 
-        // Interact
-        RaycastHit hit;
         
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, raycastLength, interactableLayers) && canLook)
-        {
-            // Debug Data
-            print(hit.collider.gameObject.name);
-            
-            // Show Crosshair
-            crossHair.SetActive((hit.collider.gameObject.layer==6 || hit.collider.gameObject.layer==14) && canLook);
-
-            // Get a click
-            if (Input.GetMouseButtonDown(0))
-            {}
-        } else {
-            // Hide crosshair
-            crossHair.SetActive(false);
-        }
     }
 }
