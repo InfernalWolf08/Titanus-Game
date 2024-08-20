@@ -5,9 +5,18 @@ using UnityEngine;
 public class ToggleObjectUI : MonoBehaviour
 {
     public GameObject uiItem;
+    public GameObject crossHair;
 
-    public void toggle(bool on)
+    void Start()
     {
-        uiItem.SetActive(on);
+        crossHair = GameObject.FindGameObjectWithTag("Crosshair");
+    }
+
+    void Update()
+    {
+        if (!crossHair.activeSelf)
+        {
+            uiItem.SetActive(false);
+        }
     }
 }

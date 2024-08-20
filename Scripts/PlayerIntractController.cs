@@ -30,7 +30,7 @@ public class PlayerIntractController : MonoBehaviour
                 crossHair.SetActive(true);
                 if (hit.collider.gameObject.GetComponent<ToggleObjectUI>()!=null)
                 {
-                    hit.collider.gameObject.GetComponent<ToggleObjectUI>().toggle(true);
+                    hit.collider.gameObject.GetComponent<ToggleObjectUI>().uiItem.SetActive(true);
                 }
             } else {
                 crossHair.SetActive(false);
