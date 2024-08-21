@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class MenuController : MonoBehaviour
     public string[] itemList;
     public Sprite[] itemSprites;
     public Image[] slots;
+    public TextMeshProUGUI[] amounts;
     public Sprite noTexture;
     public int id;
 
@@ -27,6 +29,11 @@ public class MenuController : MonoBehaviour
     {
         // Initiation
         menu.SetActive(false);
+
+        foreach (TextMeshProUGUI text in amounts)
+        {
+            text.text = "";
+        }
     }
 
     void Update()
@@ -62,8 +69,21 @@ public class MenuController : MonoBehaviour
                 {
                     inventory[nextEmptySlot].x = id;
                     inventory[nextEmptySlot].y += 1;
+
+                    // Update amount of item the player has
+                    amounts[nextEmptySlot].text = Convert.ToString(inventory[nextEmptySlot].y);
                 }
+
+                break;
             }
+        }
+
+        // Show the items image in that slot
+        if (itemSprites[id]!=null)
+        {
+            slots[nextEmptySlot].sprite = itemSprites[id];
+        } else {
+            slots[nextEmptySlot].sprite = noTexture;
         }
     }
 }

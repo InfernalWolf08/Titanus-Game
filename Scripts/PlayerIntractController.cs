@@ -22,7 +22,7 @@ public class PlayerIntractController : MonoBehaviour
         if (Physics.Raycast(controller.camera.transform.position, controller.camera.transform.forward, out hit, raycastLength, interactableLayers) && controller.canLook)
         {
             // Debug Data
-            print(hit.collider.gameObject.name);
+            print(hit.collider.gameObject.tag);
             
             // Adjust on Look
             if ((hit.collider.gameObject.layer==6) && controller.canLook)
@@ -39,6 +39,7 @@ public class PlayerIntractController : MonoBehaviour
             // Get a click
             if (Input.GetMouseButtonDown(0))
             {
+                // Item boxes
                 if (hit.collider.gameObject.tag=="Box")
                 {
                     if (hit.collider.gameObject.GetComponent<BuildingBoxController>()!=null)
@@ -46,6 +47,12 @@ public class PlayerIntractController : MonoBehaviour
                         buildController.buildings.Add(hit.collider.gameObject.GetComponent<BuildingBoxController>().buildingData);
                         Destroy(hit.collider.gameObject);
                     }
+                }
+
+                // Trees
+                if (hit.collider.gameObject.tag=="Tree")
+                {
+                    hit.collider.gameObject.GetComponent<TreeController>().gainWood();
                 }
             }
         } else {
