@@ -7,8 +7,9 @@ using TMPro;
 
 public class MenuController : MonoBehaviour
 {
-    [Header("Menu")]
+    [Header("Other")]
     public GameObject menu;
+    public PlayerController player;
 
     [Header("Tabs")]
     public GameObject Inventory;
@@ -24,6 +25,7 @@ public class MenuController : MonoBehaviour
     public TextMeshProUGUI[] amounts;
     public Sprite noTexture;
     public int id;
+    public int maxStack = 999;
 
     void Start()
     {
@@ -46,8 +48,10 @@ public class MenuController : MonoBehaviour
             if (menu.activeSelf)
             {
                 Cursor.lockState = CursorLockMode.None;
+                player.canLook = false;
             } else {
                 Cursor.lockState = CursorLockMode.Locked;
+                player.canLook = true;
             }
         }
     }
@@ -62,10 +66,10 @@ public class MenuController : MonoBehaviour
         foreach (Image slot in slots)
         {
             // If the slot is empty, or already has the item
-            if (slot==null || inventory[nextEmptySlot].x==id)
+            if (slot.sprite==null || inventory[nextEmptySlot].x==id)
             {
                 // If the slot has not yet reached the 999 cap
-                if (inventory[nextEmptySlot].y<999)
+                if (inventory[nextEmptySlot].y<maxStack)
                 {
                     inventory[nextEmptySlot].x = id;
                     inventory[nextEmptySlot].y += 1;
@@ -76,6 +80,9 @@ public class MenuController : MonoBehaviour
 
                 break;
             }
+
+            // Iterate nextEmptySlot
+            nextEmptySlot+=1;
         }
 
         // Show the items image in that slot

@@ -54,6 +54,12 @@ public class PlayerIntractController : MonoBehaviour
                 {
                     hit.collider.gameObject.GetComponent<TreeController>().gainWood();
                 }
+
+                // Iron Node
+                if (hit.collider.gameObject.tag=="Iron")
+                {
+                    hit.collider.gameObject.GetComponent<IronNodeController>().gainIron();
+                }
             }
         } else {
             // Hide crosshair

@@ -20,9 +20,6 @@ public class TreeController : MonoBehaviour
                 Instantiate(treeInteractable, treePos, Quaternion.identity, transform);
             }
         }
-
-        // Get the menucontroller
-        inv = (MenuController)FindObjectOfType(typeof(MenuController)); //Causes unity to lag
     }
 
     public void gainWood()
@@ -32,7 +29,7 @@ public class TreeController : MonoBehaviour
             woodLeft -= 1;
             inv.addItem("wood");
         } else {
-            print("No more wood");
+            gameObject.SetActive(false);
         }
     }
 }
