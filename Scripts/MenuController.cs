@@ -27,6 +27,13 @@ public class MenuController : MonoBehaviour
     public int id;
     public int maxStack = 999;
 
+    [Header("Skills")]
+    public int attack;
+    public int defence;
+    public int speed;
+    public int crafting;
+    public int effeciency;
+
     void Start()
     {
         // Initiation
@@ -56,6 +63,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    // Add item to inventory
     public void addItem(string item)
     {
         // Find the id of the item
@@ -72,7 +80,7 @@ public class MenuController : MonoBehaviour
                 if (inventory[nextEmptySlot].y<maxStack)
                 {
                     inventory[nextEmptySlot].x = id;
-                    inventory[nextEmptySlot].y += 1;
+                    inventory[nextEmptySlot].y += effeciency+1;
 
                     // Update amount of item the player has
                     amounts[nextEmptySlot].text = Convert.ToString(inventory[nextEmptySlot].y);
