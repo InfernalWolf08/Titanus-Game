@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class ItemNameController : MonoBehaviour
+public class ItemNameController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject identifier;
     public TextMeshProUGUI identifierText;
 
-    public void showItemName()
+    public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        identifier.transform.position = Input.mousePosition;
-        identifier.SetActive(true);
-        identifierText.text = transform.GetChild(1).GetComponent<Image>().sprite.name;
+        if (transform.GetChild(1).GetComponent<Image>().sprite!=null)
+        {
+            identifierText.text = transform.GetChild(1).GetComponent<Image>().sprite.name;
+        }
     }
 
-    public void hideItemName()
+    public void OnPointerExit(PointerEventData pointerEventData)
     {
-        identifier.SetActive(false);
+        identifierText.text = "";
     }
 }
